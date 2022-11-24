@@ -1,0 +1,101 @@
+1er Video -> https://youtu.be/ehpdXrM21N8
+2do Video -> https://youtu.be/Ok-D7ORMeaA
+
+Piramide Mario -> 
+
+make mario (Esto para poder correr ./mario y que corra el programa)
+./mario
+
+=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8
+
+1) ALTURA piramide entre 1-8
+
+Si input MENOR O IGUAL 	que 0, entonces NO DEJA
+
+Si input MAYOR 		que 8, entonces NO DEJA
+
+Usar BOOLEANO aca para el filtro de esto ejemplo... ->
+
+n > 0 && n < 9 , creo QUE SERIA asi
+
+CODIGO SERIA ->
+
+if (
+
+=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8
+
+2) Usar get_int "prompt" hasta que INGRESE numero entre 1 y 8
+
+Usar un WHILE aca, hasta que el numero este entre 1 y 8
+
+Usar DO While, PRIMERO corre el PROMPT y LUEGO checamos si el numero entre 1 y 8
+
+
+
+=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8
+
+3) La piramide FACIL es -> 
+
+#	
+##	
+###...	
+
+Intentar ALINEAR la piramide A LA INVERSA es el reto ->
+
+	#
+       ##
+      ###
+
+
+=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=
+
+4) Para "hacer esta piramide" hacer un "for loop" es lo mejor que podemos hacer
+
+for ( i = 0 , i < get_int , i++) , algo asi debe ser el "for loop" me imagino
+
+Y LA LOGICA dentro de esto deberia ser "print i" o algo similar y LUEGO imprimir NUEVA LINEA, para que empiece en la OTRA posicion
+
+=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=
+
+5) Ahora, "un reto extra" es "poner PUNTOS (...) para la posicion de la piramide
+
+..#
+.##
+###
+
+Y LUEGO debemos BORRAR los ... con ESPACIOS BLANCOS "   " en vez de "..." por ejp
+
+
+=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=8=
+
+CODIGO -> 
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int n;
+    do{
+        n = get_int("Positive Number: ");
+        if (n > 0 && n < 9 ){
+
+            for( int i = 0 ; i < n ; i++ ){
+                int dots = n-i;
+
+                for( int k = 1 ; k < dots ; k++){
+                        printf(" ");
+                }
+                 for( int j = 0 ; j <= i ; j++){
+                        printf("#");
+                        }
+
+                    printf("\n");
+            }
+        }
+        else{
+            printf("No Soy Numero entre 1 y 8\n");
+        }
+    }
+    while( n > 0 && n < 9 );
+}

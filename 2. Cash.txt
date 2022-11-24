@@ -1,0 +1,166 @@
+Video -> https://youtu.be/CMyqIz9bY5c
+
+# Visualization
+
+Example -> 
+
+99 cents
+
+"for loop"
+if cents > 25 , then "add 1" to "amount of quarters used" and subscract quarter from cents 
+
+99 - 25 = 74 (+1 a quarters_used, entonces quarter_used=1)
+
+74 - 25 = 49 (+1 a quarters_used, entonces quarter_used=2)
+
+49 - 25 -> 24 (+1 a quarters_used, entonces quarter_used=3)
+
+else return "quarters_used"
+
+==
+
+"for loop"
+if cents > 10 , then return dime and subscract dime from cents 
+
+24 - 10 = 14 (+1 a dimes_used, entonces dimes_used=1)
+
+14 - 10 = 4  (+1 a dimes_used, entonces dimes_used=2)
+
+else return "dimes_used"
+
+
+==
+
+"for loop"
+if cents > 5 , then return nickel and subscract nickel from cents 
+
+4 (+1 a dimes_used, entonces dimes_used=1)
+
+else return "nickels_used"
+
+/////
+
+
+#1 Implement get_cents in such a way that the function prompts the user for a number of cents using get_int and then returns that number as an int. If the user inputs a negative int, your code should prompt the user again
+
+a. user "get_int" en un "do while loop" 
+
+int cents;
+
+do {
+
+if "get_int <= 0" {
+ get_int
+}
+
+else {
+	 printf("Not a valid number, please input a positive number\n");
+}
+
+}
+while( n > 0 && n < 9 );
+
+==
+
+CODIGO ->
+
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+
+int get_cents(void);
+int calculate_quarters(int cents);
+int calculate_dimes(int cents);
+int calculate_nickels(int cents);
+int calculate_pennies(int cents);
+
+int main(void)
+{
+    // Ask how many cents the customer is owed
+    int cents = get_cents();
+
+    // Calculate the number of quarters to give the customer
+    int quarters = calculate_quarters(cents);
+    cents = cents - quarters * 25;
+
+    // Calculate the number of dimes to give the customer
+    int dimes = calculate_dimes(cents);
+    cents = cents - dimes * 10;
+
+    // Calculate the number of nickels to give the customer
+    int nickels = calculate_nickels(cents);
+    cents = cents - nickels * 5;
+
+    // Calculate the number of pennies to give the customer
+    int pennies = calculate_pennies(cents);
+    cents = cents - pennies * 1;
+
+    // Sum coins
+    int coins = quarters + dimes + nickels + pennies;
+
+    // Print total number of coins to give the customer
+    printf("This is how many coins you will receive %i\n", coins);
+}
+
+int get_cents(void){
+    int cents;
+    do {
+        cents = get_int("How Many Cents Are You Owed: ");
+        if(cents > 0){
+            return cents;
+            }
+        else{
+            printf("Please Input A Positive Amount\n");
+        }
+        }
+    while( cents < 0 );
+    return cents;
+}
+
+int calculate_quarters(int cents){
+    // int quarters = 0;
+    // while (cents >= 25){
+    //     cents = cents - 25;
+    //     quarters++;
+    // }
+     int quarters = floor(cents/25);
+     return quarters;
+    // ESTE RETURN DEBE DEVOLVER UN ENTERO, VER SI FUNCIONA , incluir paquete #include <math.h>
+    // return quarters;
+}
+
+int calculate_dimes(int cents)
+{
+    // int dimes = 0;
+    // //  while (cents >= 10){
+    // //     cents = cents - 10;
+    // //     dimes++;
+    // // }
+    // return dimes;
+    int dime = floor(cents/10);
+    return dime;
+}
+
+int calculate_nickels(int cents)
+{
+    // int nickels = 0;
+    // //  while (cents >= 5){
+    // //     cents = cents - 5;
+    // //     nickels++;
+    // // }
+    // return nickels;
+    int nickel = floor(cents/5);
+    return nickel;
+}
+
+int calculate_pennies(int cents)
+{
+    // int pennies = 0;
+    // //  while (cents >= 1){
+    // //     cents = cents - 1;
+    // //     pennies++;
+    // // }
+    // return pennies;
+    int pennie = floor(cents/1);
+    return pennie;
+}
